@@ -23,6 +23,14 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
+      - name: Debug Token Presence
+        run: |
+          if [ -z "${{ secrets.GRADER_REPO_TOKEN }}" ]; then
+            echo "❌ TOKEN IS EMPTY"
+            exit 1
+          else
+            echo "✅ Token is populated"
+          fi
 
       # 2️⃣ Checkout Private Grader Repository
       - name: Checkout Private Grader
