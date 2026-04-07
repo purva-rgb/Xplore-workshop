@@ -7,44 +7,52 @@ ASSETS.mkdir(parents=True, exist_ok=True)
 
 
 def write_text(filename: str, content: str) -> Path:
-    # create or overwrite a text file
-    """Write text file."""
+    """Create or overwrite a text file exactly as provided."""
     p = ASSETS / filename
-    p.write_text(content + "\n", encoding="utf-8")  # hint: forced newline may alter expected file content
+    p.write_text(content, encoding="utf-8") 
     return p
 
 
 def read_text(filename: str) -> str:
-    # read full file content as a string
-    """Read text file."""
+    """Read full file content as a string."""
     p = ASSETS / filename
-    return p.read_text(encoding="utf-8").upper().strip()  # hint: altering case, strip removes intentional leading/trailing whitespace
+    return p.read_text(encoding="utf-8")
 
 
 def append_text(filename: str, content: str) -> Path:
-    # append text at end of file
-    """Append text file."""
+    """Append text at the end of the file."""
     p = ASSETS / filename
-    with p.open("w", encoding="utf-8") as f:  # hint: append mode should be 'a'
+    with p.open("a", encoding="utf-8") as f:
         f.write(content)
     return p
 
 
 def overwrite_line(filename: str, line_no: int, new_line: str) -> bool:
-    # update a specific line in file
-    """Replace one line."""
+    """Update a specific line in a file (using 0-based indexing)."""
     p = ASSETS / filename
     if not p.exists():
         raise FileNotFoundError(p)
+    
     lines = p.read_text(encoding="utf-8").splitlines()
-    if line_no <= 0 or line_no > len(lines):  # hint: valid 0-index line 0 is incorrectly blocked
+    
+    if line_no < 0 or line_no >= len(lines):
         raise IndexError("line_no out of range")
-    lines[line_no - 1] = new_line
-    p.write_text("\n".join(lines), encoding="utf-8")  # hint: final newline is omitted now
+    
+    lines[line_no] = new_line
+    p.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return True
 
 
 if __name__ == "__main__":
-    demo = "Hello students!\nThis is a demo file.\n"
-    write_text("demo.txt", demo)
+    demo_content = "Hello students!\nThis is a demo file.\n"
+    write_text("demo.txt", demo_content)
+    print("--- Reading File ---")
+    print(read_text("demo.txt"))
+    
+    append_text("demo.txt", "Adding a new line here.")
+    print("\n--- After Append ---")
+    print(read_text("demo.txt"))
+    
+    overwrite_line("demo.txt", 1, "This line was changed!")
+    print("\n--- After Overwrite Line 1 ---")
     print(read_text("demo.txt"))

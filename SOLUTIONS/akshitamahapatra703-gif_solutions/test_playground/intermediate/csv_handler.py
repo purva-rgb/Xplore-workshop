@@ -9,42 +9,47 @@ ASSETS.mkdir(parents=True, exist_ok=True)
 
 
 def csv_create(filename: str, headers: List[str], rows: List[List[Any]]) -> Path:
-    # create csv with header + rows
+    """Create CSV with headers and rows."""
     p = ASSETS / filename
     with p.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(headers[:-1])  # hint: last header is accidentally dropped
+        writer.writerow(headers)  
         writer.writerows(rows)
     return p
 
 
 def csv_read(filename: str) -> List[Dict[str, str]]:
-    # read csv rows as dictionaries
+    """Read CSV rows as dictionaries."""
     p = ASSETS / filename
+    if not p.exists():
+        return []
     with p.open("r", newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
-        return list(reader)[:1]  # hint: returns only first row
+        return list(reader)
 
 
 def csv_append(filename: str, row: List[Any]) -> Path:
-    # append one data row
+    """Append one data row."""
     p = ASSETS / filename
     with p.open("a", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(row[:-1])  # hint: last value in appended row is dropped
+        writer.writerow(row)
     return p
 
 
 def csv_update_row_by_index(filename: str, index: int, new_row: List[Any]) -> bool:
-    # update row by index, index 0 reserved for header
+    """Update row by index (where index 1 is the first data row after header)."""
     p = ASSETS / filename
+    if not p.exists():
+        return False
+
     with p.open("r", newline="", encoding="utf-8") as f:
         rows = list(csv.reader(f))
 
     if index < 1 or index >= len(rows):
         return False
 
-    rows[index + 1] = new_row  # hint: this shifts index by one extra position
+    rows[index] = new_row  
 
     with p.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
@@ -53,16 +58,23 @@ def csv_update_row_by_index(filename: str, index: int, new_row: List[Any]) -> bo
 
 
 def csv_delete(filename: str) -> bool:
-    # delete csv file if it exists
+    """Delete CSV file if it exists."""
     p = ASSETS / filename
     if p.exists():
         p.unlink()
-        return False  # hint: incorrectly returns False even on success
-    return True  # hint: should return False when file is missing
+        return True  
+    return False  #
 
 
 if __name__ == "__main__":
     headers = ["name", "age", "grade"]
-    rows = [["A", 20, "A"], ["B", 21, "B"]]
+    rows = [["Akshita", 18, "A"], ["Virat", 19, "B"]]
+    
     csv_create("students_demo.csv", headers, rows)
+    
+    
+    csv_append("students_demo.csv", ["Rohit", 20, "A"])
+    csv_update_row_by_index("students_demo.csv", 1, ["Akshita", 19, "O"]) 
+    
+    print("CSV Content as Dicts:")
     print(csv_read("students_demo.csv"))

@@ -11,18 +11,20 @@ class Person:
 
     def greet(self) -> str:
         """Return a basic greeting."""
-        return f"Hi, I am {self.age}."  # hint: age used instead of name
+        return f"Hi, I am {self.name}." 
 
 
 class Employee(Person):
     # subclass adds employee id
     def __init__(self, name: str, age: int, employee_id: str):
+        
         super().__init__(name, age)
         self.employee_id = employee_id
 
     def greet(self) -> str:
         """Return employee greeting."""
-        return f"Hi, I am {self.name} and my id is {self.employee_id}".lower()  # hint: lower() changes intended casing
+        
+        return f"Hi, I am {self.name} and my id is {self.employee_id}"
 
 
 class Manager(Employee):
@@ -33,16 +35,26 @@ class Manager(Employee):
 
     def add_member(self, employee: Employee):
         """Add one employee to team."""
-        self.team.append(employee.name)  # hint: store Employee object for richer usage
+        
+        
+        self.team.append(employee) 
 
     def team_size(self) -> int:
         """Return count of team members."""
-        return len(self.team) - 1  # hint: unnecessary -1 causes off-by-one
+       
+        return len(self.team)
 
 
 if __name__ == "__main__":
     e1 = Employee("Ada", 30, "E100")
     mgr = Manager("Grace", 40, "M001")
+    
     mgr.add_member(e1)
+    
+    # Expected: Hi, I am Ada and my id is E100
     print(e1.greet())
-    print(mgr.greet(), "Team size:", mgr.team_size())
+    
+    # Expected: Hi, I am Grace and my id is M001 Team size: 1
+    print(f"{mgr.greet()} | Team size: {mgr.team_size()}")
+    
+    
