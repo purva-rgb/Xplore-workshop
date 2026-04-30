@@ -42,6 +42,9 @@ def json_delete_key(filename: str, key_path: str) -> bool:
     # delete key at dotted path if present
     data = json_read(filename)
     keys = key_path.split(".") if key_path else []
+    if len(keys) == 0:
+        # correctly handle empty key path
+        return False
     cur = data
     for k in keys[:-1]:
         cur = cur.get(k, {})

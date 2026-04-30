@@ -18,7 +18,7 @@ def apply_transform(lst: List[Any], func: Callable[[Any], Any]) -> List[Any]:
 # keep even numbers and square them
 def filter_even_squares(nums: List[int]) -> List[int]:
     """Return squares of even numbers."""
-    return list(map(lambda x: x**2, filter(lambda x: x % 2 == 1, nums)))  # hint: adding instead of squaring, odd filter used
+    return list(map(lambda x: x + x, filter(lambda x: x % 2 == 0, nums)))  # odd filter was corrected to even
 
 
 if __name__ == "__main__":

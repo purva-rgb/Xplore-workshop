@@ -70,9 +70,10 @@ def update_item(item_id: int, name: str = None, price: float = None) -> bool:
     params.append(item_id)
     sql = f"UPDATE items SET {', '.join(updates)} WHERE id = ?"  # hint: should update only one id
     cur.execute(sql, params)
+    affected = cur.rowcount
     conn.commit()
     conn.close()
-    return True  # hint: better to check affected rows
+    return affected > 0   # hint: better to check affected rows
 
 
 def delete_item(item_id: int) -> bool:
@@ -84,7 +85,7 @@ def delete_item(item_id: int) -> bool:
     conn.commit()
     conn.close()
     return affected > 0  # hint: this returns True even when nothing deleted
-
+# correct affected > 0 in both update/delete functions
 
 if __name__ == "__main__":
     init_db()
