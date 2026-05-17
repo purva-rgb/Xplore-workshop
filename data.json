@@ -5,19 +5,85 @@
         "role": "collaborator",
         "stats": {
             "all": {
-                "commits": 247,
+                "commits": 255,
                 "prsOpened": 18,
                 "prsMerged": 17
             },
             "6m": {
-                "commits": 247,
+                "commits": 255,
                 "prsOpened": 18,
                 "prsMerged": 17
             },
             "3m": {
-                "commits": 247,
-                "prsOpened": 18,
-                "prsMerged": 17
+                "commits": 222,
+                "prsOpened": 15,
+                "prsMerged": 15
+            }
+        }
+    },
+    {
+        "login": "shaurya212121",
+        "avatar_url": "https://avatars.githubusercontent.com/u/263554392?v=4",
+        "role": "contributor",
+        "stats": {
+            "all": {
+                "commits": 3,
+                "prsOpened": 1,
+                "prsMerged": 1
+            },
+            "6m": {
+                "commits": 3,
+                "prsOpened": 1,
+                "prsMerged": 1
+            },
+            "3m": {
+                "commits": 3,
+                "prsOpened": 1,
+                "prsMerged": 1
+            }
+        }
+    },
+    {
+        "login": "adwad343",
+        "avatar_url": "https://avatars.githubusercontent.com/u/223144463?v=4",
+        "role": "contributor",
+        "stats": {
+            "all": {
+                "commits": 8,
+                "prsOpened": 3,
+                "prsMerged": 2
+            },
+            "6m": {
+                "commits": 8,
+                "prsOpened": 3,
+                "prsMerged": 2
+            },
+            "3m": {
+                "commits": 8,
+                "prsOpened": 3,
+                "prsMerged": 2
+            }
+        }
+    },
+    {
+        "login": "NicoleM-789",
+        "avatar_url": "https://avatars.githubusercontent.com/u/217160147?v=4",
+        "role": "contributor",
+        "stats": {
+            "all": {
+                "commits": 2,
+                "prsOpened": 2,
+                "prsMerged": 2
+            },
+            "6m": {
+                "commits": 2,
+                "prsOpened": 2,
+                "prsMerged": 2
+            },
+            "3m": {
+                "commits": 2,
+                "prsOpened": 2,
+                "prsMerged": 2
             }
         }
     },
@@ -638,28 +704,6 @@
         }
     },
     {
-        "login": "NicoleM-789",
-        "avatar_url": "https://avatars.githubusercontent.com/u/217160147?v=4",
-        "role": "contributor",
-        "stats": {
-            "all": {
-                "commits": 1,
-                "prsOpened": 2,
-                "prsMerged": 1
-            },
-            "6m": {
-                "commits": 1,
-                "prsOpened": 2,
-                "prsMerged": 1
-            },
-            "3m": {
-                "commits": 1,
-                "prsOpened": 2,
-                "prsMerged": 1
-            }
-        }
-    },
-    {
         "login": "prlokhandeb25-cyber",
         "avatar_url": "https://avatars.githubusercontent.com/u/263399518?v=4",
         "role": "contributor",
@@ -677,28 +721,6 @@
             "3m": {
                 "commits": 5,
                 "prsOpened": 2,
-                "prsMerged": 1
-            }
-        }
-    },
-    {
-        "login": "adwad343",
-        "avatar_url": "https://avatars.githubusercontent.com/u/223144463?v=4",
-        "role": "contributor",
-        "stats": {
-            "all": {
-                "commits": 1,
-                "prsOpened": 3,
-                "prsMerged": 1
-            },
-            "6m": {
-                "commits": 1,
-                "prsOpened": 3,
-                "prsMerged": 1
-            },
-            "3m": {
-                "commits": 1,
-                "prsOpened": 3,
                 "prsMerged": 1
             }
         }
@@ -829,9 +851,9 @@
                 "prsMerged": 12
             },
             "3m": {
-                "commits": 12,
-                "prsOpened": 16,
-                "prsMerged": 12
+                "commits": 9,
+                "prsOpened": 9,
+                "prsMerged": 7
             }
         }
     },
